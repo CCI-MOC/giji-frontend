@@ -19,8 +19,6 @@ export default React.createClass({
 
     getSrc: function(hash, icon_set, size) {
         switch (icon_set) {
-            case "unicorn":
-                return "//unicornify.appspot.com/avatar/" + hash + "?s=" + size;
             case "wavatar":
                 return "//www.gravatar.com/avatar/" + hash + "?d=wavatar&s=" + size;
             case "monster":
