@@ -60,6 +60,7 @@ import BMIPage from "./components/bmi/BMIPage";
 import HILPage from "./components/hil/HILPage";
 import NetexPage from "./components/netex/NetexPage";
 import MixmatchPage from "./components/mixmatch/MixmatchPage";
+import HTCPage from "./components/htc/HTCPage";
 
 import OpenStackPage from "./components/openstack/OpenStackPage";
 
@@ -127,6 +128,7 @@ function AppRoutes(props) {
             <Route path="hil" component={HILPage} />
             <Route path="netex" component={NetexPage} />
             <Route path="mixmatch" component={MixmatchPage} />
+            <Route path="htc" component={HTCPage} />
             <Route path="settings" component={SettingsPage} />
             <Route
                 path="admin"

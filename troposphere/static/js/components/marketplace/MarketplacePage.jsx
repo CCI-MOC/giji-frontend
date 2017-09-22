@@ -105,6 +105,12 @@ export default React.createClass({
                                           description="Allow for reserving physical machines and connecting them via isolated networks."
                                           linksTo="hil" />
                         </div>
+                        <div className="col-xs-6 col-sm-3">
+                            <CallToAction title="High Throughput Computing"
+                                          image={comming}
+                                          description="Run HTC job with MOC OpenStack computing power"
+                                          linksTo="htc" />
+                        </div>
                     </div>
                     <h2 className="t-headline">GIJI Enablements</h2>
                     <div className="row calls-to-action">
