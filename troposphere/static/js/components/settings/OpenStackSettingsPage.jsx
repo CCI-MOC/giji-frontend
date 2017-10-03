@@ -72,7 +72,7 @@ export default React.createClass({
                     <h3 className="t-title">Allocation</h3>
                     <div>
                         <p>
-                            If you need a temporary or permanent boost in your allocation (more CPUs, etc.) you may fill up this <a href="https://massopen.cloud/quota-change-request-form/">Quota Change Request Form</a>
+                            If you need a temporary or permanent boost in your allocation (more CPUs, etc.) you may fill up this <a href="https://massopen.cloud/quota-change-request-form/" target="_blank">Quota Change Request Form</a>
                         </p>
                     </div>
                 </div>
