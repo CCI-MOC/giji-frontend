@@ -2,7 +2,6 @@
   sudo: required
   group: deprecated-2017Q3
   dist: trusty
-  group: deprecated-2017Q3
   language: node_js
   node_js: 6.11
   cache:
