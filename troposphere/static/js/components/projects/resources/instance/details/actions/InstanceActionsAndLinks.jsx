@@ -235,6 +235,12 @@ export default React.createClass({
             webDesktopCapable = !!(instance && instance.get("web_desktop")),
             ipAddress = instance.get("ip_address"),
             disableWebLinks = !ipAddress || ipAddress === "0.0.0.0";
+
+        let links = [
+            {
+            }
+        ];
+
         {/*
         let links = [
             {
