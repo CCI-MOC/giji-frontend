@@ -108,6 +108,7 @@ export default {
                     // THIS token is only registered inside Troposphere. It is *NOT* the token that atmosphere will have on record.
                     // let token = response.token;
                     let username = response.username;
+                    let projectName = response.project_name;
 
                     if(onSuccess != null) {
                         onSuccess(username, auth_token, projectName, provider);
