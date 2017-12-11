@@ -3,6 +3,7 @@ import os
 import logging
 
 from datetime import timedelta
+from datetime import datetime
 from urllib import urlencode
 from urlparse import urlparse
 
@@ -107,8 +108,17 @@ def _populate_template_params(request, maintenance_records, notice_t, disabled_l
         if login_auth_type:
             login_auth_allowed.append({'method': login_auth_type, 'provider': auth_provider})
     use_login_selection = getattr(settings, "USE_LOGIN_SELECTION", False)
+    token_time = request.session.get('token_expire_time')
+    if token_time:
+        token_expire_time = datetime.strptime(token_time, "%Y-%m-%d %H:%M:%S")
+        now = datetime.now()
+        expire_time = (token_expire_time - now).total_seconds() * 1000
+    else:
+        expire_time = 2147483647
+
     template_params = {
         'access_token': request.session.get('access_token'),
+        'token_expire': expire_time,
         'use_login_selection': use_login_selection,
         'login_auth_allowed': login_auth_allowed,
         'org_name': settings.ORG_NAME,

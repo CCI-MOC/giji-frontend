@@ -20,7 +20,7 @@ export default React.createClass({
         <div role="form">
             <div className="form-group">
                 <p>
-                    {"Atmosphere is currently under maintenance. This message will " +
+                    {"GIJI is currently under maintenance. This message will " +
                      "automatically go away once maintenance is completed."}
                 </p>
             </div>
@@ -34,7 +34,7 @@ export default React.createClass({
             <div className="modal-dialog">
                 <div className="modal-content">
                     <div className="modal-header">
-                        <h1 className="t-title">Atmosphere Maintenance</h1>
+                        <h1 className="t-title">GIJI Maintenance</h1>
                     </div>
                     <div className="modal-body">
                         {this.renderBody()}

@@ -47,7 +47,7 @@ UWSGI_LOG_PATH =
 
 [local.py]
 DEBUG = False
-ADMINS_EMAIL_TUPLE=[] # [('Atmosphere Admin', 'atmo-admin@website.com'),('System Admins', 'sys-admin@website.com')]
+ADMINS_EMAIL_TUPLE=[] # [('GIJI Admin', 'giji-admin@massopen.cloud'),('System Admins', 'giji-admin@massopen.cloud')]
 SERVER_EMAIL =
 THEME_NAME =
 SITE_TITLE =

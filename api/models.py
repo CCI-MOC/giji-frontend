@@ -123,7 +123,7 @@ class SiteMetadata(SingletonModel):
         help_text="Hyperlink to page communicate Atmosphere stats information.")
     site_footer_link = models.CharField(
         max_length=254,
-        default=b"http://user.cyverse.org/",
+        default=b"https://massopen.cloud/",
         help_text="Hyperlink in footer to host installation organization or product page.")
     site_footer = models.TextField(
         default=b"", blank=True,

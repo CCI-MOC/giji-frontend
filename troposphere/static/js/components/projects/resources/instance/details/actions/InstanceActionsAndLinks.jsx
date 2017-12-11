@@ -29,12 +29,14 @@ export default React.createClass({
     actionSpecs: function() {
         // For now, order *matters*
         let specs = [
+            {/*
             {
                 key: InstanceActionNames.IMAGE,
                 label: "Image",
                 icon: "camera",
                 onClick: this.onImageRequest
             },
+            */},
             {
                 key: InstanceActionNames.START,
                 label: "Start",
@@ -135,6 +137,7 @@ export default React.createClass({
         modals.InstanceModals.resume(this.props.instance);
     },
 
+    
     onReport: function() {
         // This needs to be flagged to handle the case where
         // Intercom platform is used, but Respond is *not*
@@ -228,11 +231,17 @@ export default React.createClass({
 
     getIntegrationLinks() {
         let { instance } = this.props,
-            webShellUrl = instance.shell_url(),
+            // webShellUrl = instance.shell_url(),
             webDesktopCapable = !!(instance && instance.get("web_desktop")),
             ipAddress = instance.get("ip_address"),
             disableWebLinks = !ipAddress || ipAddress === "0.0.0.0";
 
+        let links = [
+            {
+            }
+        ];
+
+        {/*
         let links = [
             {
                 label: "Open Old Web Shell",
@@ -243,7 +252,7 @@ export default React.createClass({
                 isDisabled: disableWebLinks
             }
         ];
-
+        */}
         if (webDesktopCapable && featureFlags.WEB_DESKTOP) {
             links.push({
                 label: "Open Old Web Desktop",
@@ -355,6 +364,13 @@ export default React.createClass({
                 {
                     label: "Actions",
                     icon: null
+                }
+            ];
+       {/*
+       let linkElements = [
+                {
+                    label: "Actions",
+                    icon: null
                 },
                 {
                     label: "Report",
@@ -362,6 +378,7 @@ export default React.createClass({
                     onClick: this.onReport
                 }
             ];
+        */}
 
         let instance_owner = this.props.instance.get('user'),
             project_leaders = this.props.project.get('leaders'),
@@ -378,10 +395,12 @@ export default React.createClass({
             }];
         }
         linkElements = linkElements.concat(actionElements);
+        {/*
         linkElements.push({
             label: "Links",
             icon: null
         });
+        */}
         linkElements = linkElements.concat(this.getIntegrationLinks());
         return linkElements;
     },

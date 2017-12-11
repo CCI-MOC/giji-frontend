@@ -47,11 +47,13 @@ export default React.createClass({
                        onClick={this.onCreateInstance}>
                         <i className={'glyphicon glyphicon-tasks'} /> Instance</a>
                 </li>
+                {/*
                 <li>
                     <a id="res-create-volume" href="#"
                        onClick={this.onCreateVolume}>
                         <i className={'glyphicon glyphicon-hdd'} /> Volume</a>
                 </li>
+                */}
                 <li>
                     <a id="res-create-link" href="#"
                        onClick={this.onCreateExternalLink}>
