@@ -94,9 +94,6 @@ export default React.createClass({
         var hasUsername = !!this.state.username && this.state.username.length > 0;
         var hasPassword = !!this.state.password && this.state.password.length > 0;
         var canLogin = this.state.allowLogin == true;
-        if(this.state.showNewProvider) {
-            hasProjectName = true;
-        }
         return hasUsername && hasPassword && canLogin;
     },
     onProviderChange: function(provider) {
