@@ -33,7 +33,7 @@ export default React.createClass({
                 </div>
             </div>
             <h4 className="t-title">
-                Atmosphere is currently under maintenance.
+                GIJI is currently under maintenance.
             </h4>
             {statusPageEl}
         </div>

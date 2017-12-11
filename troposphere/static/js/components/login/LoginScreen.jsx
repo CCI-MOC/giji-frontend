@@ -6,11 +6,8 @@ import Backbone from "backbone";
 import ReactDOM from "react-dom";
 import NotificationController from "controllers/NotificationController";
 import SplashScreen from "components/SplashScreen";
-import SelectMenu from "components/common/ui/SelectMenu";
 import { setCookie } from "utilities/cookieHelpers";
-import PasswordLoginForm from "./PasswordLoginForm";
 import OpenstackLoginForm from "./OpenstackLoginForm";
-import OAuthLoginForm from "./OAuthLoginForm";
 
 export default React.createClass({
     displayName: "LoginScreen",
@@ -103,7 +100,7 @@ export default React.createClass({
                 var errorMessage,
                     response_error = (response.responseJSON != null) ? response.responseJSON.detail : response.responseText;
                 if (response.status >= 500) {
-                    errorMessage = `Your login failed due to an unexpected error in the Atmosphere Auth Server. If you continue to see this message please email <a href='mailto:${globals.SUPPORT_EMAIL}'>${globals.SUPPORT_EMAIL}</a>.`;
+                    errorMessage = `Your login failed due to an unexpected error in the GIJI Auth Server. If you continue to see this message please email <a href='mailto:${globals.SUPPORT_EMAIL}'>${globals.SUPPORT_EMAIL}</a>.`;
                 } else {
                     errorMessage = `There was an error saving new user token: ${response_error}`;
                 }
@@ -124,20 +121,10 @@ export default React.createClass({
     },
     // Rendering
     renderLoginMethod: function() {
-        let method = this.state.loginProvider.get('method'),
-            provider = this.state.loginProvider.get('provider');
-        if (method == "password-login") {
-            return (<PasswordLoginForm
-                attemptLogin={this.attemptPasswordLogin}/>);
-        } else if (method == "openstack-login") {
-            return (<OpenstackLoginForm
-                attemptLogin={this.attemptOpenstackLogin}/>);
-        } else if (method == "oauth-login") {
-            return (<OAuthLoginForm
-                provider={provider}
-                attemptLogin={this.attemptOAuthLogin}/>);
-        }
+        return (<OpenstackLoginForm
+            attemptLogin={this.attemptOpenstackLogin}/>);
     },
+
     onIdentityProviderChange: function(idp) {
         this.setState({loginProvider:idp});
     },
@@ -157,15 +144,6 @@ export default React.createClass({
 
         return (
            <div id="main-login-modal" className={mainClassnames} style={customStyle}>
-                <div className="form-group">
-                    <label>Login Method</label>
-                    <SelectMenu id="login-screen-select"
-                        current={ this.state.loginProvider }
-                        optionName={ idp => idp.get('method') }
-                        list={ this.state.identityProviders }
-                        onSelect={ this.onIdentityProviderChange }
-                    />
-                </div>
                 {this.renderLoginMethod()}
            </div>
         );

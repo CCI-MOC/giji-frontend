@@ -62,6 +62,27 @@ export default React.createClass({
                              projectId: project.id
                          })}
                     </ul>
+                </div>
+            </div>
+            <div className="project-name container">
+                <h1 className="t-display-1">{project.get("name")}</h1>
+            </div>
+        </div>
+        );
+
+        /*
+        return (
+        <div>
+            <div className="secondary-nav">
+                <div className="container">
+                    <ul className="secondary-nav-links">
+                        {this.renderRoute("Resources", "resources", "th", {
+                             projectId: project.id
+                         })}
+                        {this.renderRoute("Details", "details", "list-alt", {
+                             projectId: project.id
+                         })}
+                    </ul>
                     <ul className="options-bar navbar-nav navbar-right">
                         <li className="dropdown">
                             <a href="#" className="dropdown-toggle" data-toggle="dropdown"><i className="glyphicon glyphicon-cog" /> Options <b className="caret"></b></a>
@@ -79,5 +100,6 @@ export default React.createClass({
             </div>
         </div>
         );
+        */
     }
 });

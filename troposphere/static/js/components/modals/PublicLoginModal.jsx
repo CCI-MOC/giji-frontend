@@ -15,7 +15,7 @@ export default React.createClass({
                 <div className="modal-content login-modal-content">
                     <div className="modal-header">
                         {this.renderCloseButton()}
-                        <h1 className="t-title">Login to Atmosphere</h1>
+                        <h1 className="t-title">Login to MOC GIJI</h1>
                     </div>
                     <div className="modal-body" style={{paddingBottom: "0px", minHeight: "350px"}}>
                         <LoginScreen login_from="public_site" />

@@ -62,14 +62,14 @@ export default React.createClass({
                 return <div style={{ height: "63px" }} className="secondary-nav"/>
             }
 
-            let myImagesText = `My Images (${userImages.length})`;
+            // let myImagesText = `My Images (${userImages.length})`;
             let myFavoritedImagesText = `Favorites (${favoritedImages.length})`;
 
             routes = [
                 this.renderRoute("Search", "search", "search", false),
                 this.renderRoute(myFavoritedImagesText, "favorites", "bookmark", true),
-                this.renderRoute(myImagesText, "authored", "user", true),
-                this.renderRoute("My Image Requests", "my-image-requests", "export", true),
+                // this.renderRoute(myImagesText, "authored", "user", true),
+                // this.renderRoute("My Image Requests", "my-image-requests", "export", true),
                 this.renderRoute("Tags", "tags", "tags", false),
             ];
         }

@@ -95,7 +95,7 @@ export default {
                 var errorMessage,
                     response_error = response.responseJSON.detail;
                 if (response.status >= 500) {
-                    errorMessage = "Your feedback could not be submitted. If you'd like to send it directly to support, email <a href='mailto:support@iplantcollaborative.org'>support@iplantcollaborative.org</a>.";
+                    errorMessage = "Your feedback could not be submitted. If you'd like to send it directly to support, email <a href='mailto:giji@lists.massopen.cloud'>giji@lists.massopen.cloud</a>.";
                 } else {
                     errorMessage = "There was an error submitting your request: " + response_error;
                 }

@@ -111,7 +111,7 @@ export default React.createClass({
                     primary
                     onTouchTap={this.attemptLogin}
                     disabled={!this.isSubmittable()}
-                    label="Click to Login with Openstack"
+                    label="Log in"
                 />
             );
         }
@@ -162,7 +162,7 @@ export default React.createClass({
                                 list={ providerList }
                                 onSelect={ this.onProviderChange } />
                 </div>
-                <div className="login-screen-footer modal-footer">
+                <div className="login-screen-footer modal-login-footer">
                     <span className="help-block">{errorMessage}</span>
                     {this.renderLoginOrLoading()}
                 </div>

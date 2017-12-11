@@ -4,12 +4,14 @@ import ButtonBar from "./ButtonBar";
 import ExternalLinkList from "./link/ExternalLinkList";
 import ImageList from "./image/ImageList";
 import InstanceList from "./instance/InstanceList";
-import VolumeList from "./volume/VolumeList";
+//import VolumeList from "./volume/VolumeList";
 import modals from "modals";
 import stores from "stores";
 import actions from "actions";
 
 import { trackAction } from 'utilities/userActivity';
+
+import horizon from "themeImages/horizon.jpg";
 
 
 export default React.createClass({
@@ -193,12 +195,14 @@ export default React.createClass({
                         onPreviewResource={this.onPreviewResource}
                         previewedResource={previewedResource}
                         selectedResources={selectedResources} />
+                    {/*
                     <VolumeList volumes={projectVolumes}
                         onResourceSelected={this.onResourceSelected}
                         onResourceDeselected={this.onResourceDeselected}
                         onPreviewResource={this.onPreviewResource}
                         previewedResource={previewedResource}
                         selectedResources={selectedResources} />
+                    */}
                     <ImageList images={projectImages}
                         onResourceSelected={this.onResourceSelected}
                         onResourceDeselected={this.onResourceDeselected}
@@ -212,6 +216,9 @@ export default React.createClass({
                         previewedResource={previewedResource}
                         selectedResources={selectedResources} />
                 </div>
+            </div>
+            <div>
+                <a href="https://kaizen.massopen.cloud/dashboard/project/instances/" target="_blank"><img src={horizon} style={{float:"right"}} /></a>
             </div>
         </div>
         );
