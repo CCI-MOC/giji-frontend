@@ -6,6 +6,8 @@ import { Route,
 import globals from "globals";
 
 import Master from "./components/Master";
+import MarketplacePage from "./components/marketplace/MarketplacePage";
+import AboutPage from "./components/about/AboutPage";
 import BadgeMaster from "./components/badges/BadgeMaster";
 import MyBadges from "./components/badges/MyBadges";
 import AllBadges from "./components/badges/AllBadges";
@@ -31,6 +33,7 @@ import ImageTagsPage from "./components/images/ImageTagsPage";
 import ImagesMaster from "./components/images/ImagesMaster";
 import NewInstanceDetail from "./components/common/InstanceDetail";
 import SettingsPage from "./components/settings/SettingsPage";
+import OpenStackSettingsPage from "./components/settings/OpenStackSettingsPage";
 import ProjectInstancePage from "./components/projects/InstanceDetailsPage";
 import ProjectVolumePage from "./components/projects/VolumeDetailsPage";
 import ProjectLinkPage from "./components/projects/ExternalLinkDetailsPage";
@@ -53,6 +56,19 @@ import NotFoundPage from "./components/NotFoundPage";
 import ResourceMaster from "./components/admin/ResourceMaster";
 import ResourceRequest from "./components/admin/ResourceRequest/ResourceRequest";
 
+import OpenshiftPage from "./components/openshift/OpenshiftPage";
+import BMIPage from "./components/bmi/BMIPage";
+import HILPage from "./components/hil/HILPage";
+import NetexPage from "./components/netex/NetexPage";
+import MixmatchPage from "./components/mixmatch/MixmatchPage";
+import TutorialPage from "./components/tutorial/TutorialPage";
+
+import DataversePage from "./components/dataverse/DataversePage";
+import PluginPage from "./components/dataverse/PluginPage";
+import BigDataPage from "./components/dataverse/BigDataPage";
+
+import OpenStackPage from "./components/openstack/OpenStackPage";
+
 const providersRoute = (
 <Route path="providers" component={ProvidersMaster}>
     <IndexRoute component={ProviderListSection} />
@@ -70,6 +86,8 @@ function AppRoutes(props) {
 
     return (
         <Route path="/" component={Master}>
+            <Route path="marketplace" component={MarketplacePage} />
+            <Route path="about" component={AboutPage} />
             <Route path="dashboard" component={DashboardPage} />
             <Route path="projects" component={ProjectsMaster}>
                 <Route path=":projectId" component={ProjectDetailsMaster}>
@@ -109,6 +127,22 @@ function AppRoutes(props) {
              ? null
              : providersRoute}
             <Route path="help" component={HelpPage} />
+            <Route path="dataverse" component={DataversePage}>
+                <IndexRedirect to="big-data-analytics" />
+                <Route path="big-data-analytics" component={BigDataPage} />
+                <Route path="plugins" component={PluginPage} />
+            </Route>
+            <Route path="openstack" component={OpenStackPage} />
+            <Route path="openshift" component={OpenshiftPage} />
+            <Route path="bmi" component={BMIPage} />
+            <Route path="hil" component={HILPage} />
+            <Route path="netex" component={NetexPage} />
+            <Route path="mixmatch" component={MixmatchPage} />
+            <Route path="settings" component={SettingsPage}>
+                <IndexRedirect to="openstack-settings" />
+                <Route path="openstack-settings" component={OpenStackSettingsPage} />
+            </Route>
+            <Route path="tutorials" component={TutorialPage} />
             <Route path="settings" component={SettingsPage} />
             <Route
                 path="admin"
@@ -137,8 +171,8 @@ function AppRoutes(props) {
                 <Route path="images" component={MyImageRequestsPage} />
             </Route>
             <Route path="instances/:instanceId" component={NewInstanceDetail} />
-            <IndexRoute component={DashboardPage} />
-            <IndexRedirect to="dashboard" />
+            <IndexRoute component={MarketplacePage} />
+            <IndexRedirect to="marketplace" />
         </Route>
     )
 }

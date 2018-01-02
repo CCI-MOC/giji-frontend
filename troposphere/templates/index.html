@@ -27,6 +27,12 @@
     {% include 'partials/intercom_snippet.html' %}
 {% endif %}
 
+    <script type="text/javascript">
+        setTimeout(function() {
+            window.location.href = "/logout?force=true&airport_ui=false";
+        }, {{ token_expire }});
+    </script>
+
 </head>
 <body class="splash-screen">
 
@@ -42,6 +48,10 @@
     <script type="text/javascript">
 {% if access_token %}
     var access_token = "{{ access_token }}";
+{% endif %}
+
+{% if token_expire %}
+    var token_expire = "{{ token_expire }}";
 {% endif %}
 
     var login_auth_allowed = {{ login_auth_allowed|safe }};

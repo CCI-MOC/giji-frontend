@@ -4,7 +4,7 @@ import context from "context";
 import Button from "./Button";
 import SubMenu from "./SubMenu";
 import RefreshButton from "./RefreshButton";
-import RequestResourcesButton from "./RequestResourcesButton";
+// import RequestResourcesButton from "./RequestResourcesButton";
 import ResourceActionButtons from "./ResourceActionButtons";
 
 export default React.createClass({
@@ -60,11 +60,13 @@ export default React.createClass({
             >
                 <SubMenu { ...this.props }/>
                 <RefreshButton/>
+                {/*
                 <RequestResourcesButton />
                 <Button icon="folder-open"
                     tooltip="Move selected resources"
                     onClick={this.props.onMoveSelectedResources}
                     isVisible={this.props.isVisible} />
+                */}
                 <Button icon="export"
                     tooltip="Remove selected resources (admin only)"
                     onClick={this.props.onRemoveSelectedResources}

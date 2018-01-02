@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ## [Delightful-Duboshin (v30)](https://github.com/cyverse/troposphere/milestone/19?closed=1) (as of 2017-12-12)
 
 Enhancement:

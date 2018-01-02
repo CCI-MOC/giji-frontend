@@ -30,7 +30,7 @@ a {
 }
 
 a[target="_blank"]::after {
-  content: '\e164';
+  //content: '\e164';
   font-family: 'Glyphicons Halflings';
   margin-left: 4px;
   font-size: .8em;

@@ -49,7 +49,7 @@ const SSHConfiguration = React.createClass({
                    Removing a key from this list doesn't remove it from any existing
                    instances. If you need to remove a key from an existing
                    instance, please edit <code>/root/.ssh/authorized_keys</code> inside the
-                   instance, or contact Atmosphere support at
+                   instance, or contact GIJI support at
                    { this.renderSupportLink() } for assistance.
                 </p>
                 <p>

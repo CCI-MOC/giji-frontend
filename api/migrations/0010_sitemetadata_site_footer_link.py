@@ -15,6 +15,6 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='sitemetadata',
             name='site_footer_link',
-            field=models.CharField(default=b'http://user.cyverse.org/', help_text=b'Hyperlink in footer to host installation organization or product page.', max_length=254),
+            field=models.CharField(default=b'https://massopen.cloud/', help_text=b'Hyperlink in footer to host installation organization or product page.', max_length=254),
         ),
     ]

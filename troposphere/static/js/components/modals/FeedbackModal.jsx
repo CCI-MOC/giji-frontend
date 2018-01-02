@@ -123,7 +123,7 @@ export default React.createClass({
         <div role="form">
             <div className="form-group">
                 <p>
-                    {"Are you experiencing a problem with Atmosphere to which you can't find a solution? " +
+                    {"Are you experiencing a problem with GIJI to which you can't find a solution? " +
                      "Do you have a feature request or bug report? Let us know!"}
                 </p>
                 <div className="alert alert-info">

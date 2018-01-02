@@ -159,7 +159,7 @@ const Project = React.createClass({
             projectImages,
             projectVolumes,
             numInstances = "-",
-            numVolumes = "-",
+            // numVolumes = "-",
             numImages = "-",
             numExternalLinks = "-";
 
@@ -185,7 +185,7 @@ const Project = React.createClass({
 
         if (projectExternalLinks && projectInstances && projectVolumes && projectImages) {
             numInstances = projectInstances.length;
-            numVolumes = projectVolumes.length;
+            // numVolumes = projectVolumes.length;
             numImages = projectImages.length;
             numExternalLinks = projectExternalLinks.length;
         }
@@ -213,7 +213,7 @@ const Project = React.createClass({
                         <div className="media__footer">
                             <ul className="project-resource-list ">
                                 <ProjectResource icon={"tasks"} count={numInstances} resourceType={"instances"} />
-                                <ProjectResource icon={"hdd"} count={numVolumes} resourceType={"volumes"} />
+                                {/*<ProjectResource icon={"hdd"} count={numVolumes} resourceType={"volumes"} />*/}
                                 <ProjectResource icon={"floppy-disk"} count={numImages} resourceType={"images"} />
                                 <ProjectResource icon={"globe"} count={numExternalLinks} resourceType={"links"} />
                             </ul>

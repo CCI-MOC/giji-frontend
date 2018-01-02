@@ -39,7 +39,7 @@ export default React.createClass({
             return (
             <ul className="notifications">
                 <div className="preview-message">
-                    <span className="message">You will see a notification here when Atmosphere is scheduled to go down for maintenance.</span>
+                    <span className="message">You will see a notification here when GIJI is scheduled to go down for maintenance.</span>
                 </div>
             </ul>
             )
