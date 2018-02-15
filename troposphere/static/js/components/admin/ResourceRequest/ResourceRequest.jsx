@@ -22,6 +22,8 @@ export default React.createClass({
     getInitialState() {
         return {
             actionPending: false,
+            allocationsSavedOnce: false,
+            identitiesSavedOnce: false,
         };
     },
 
@@ -55,6 +57,7 @@ export default React.createClass({
                     allocation: allocationSource,
                     username: request.get("created_by").username
                 })
+                this.setState({ allocationsSavedOnce: true });
             })
             .catch(errorHandler);
         return promise;
@@ -81,6 +84,7 @@ export default React.createClass({
                     identity,
                     username
                 });
+                this.setState({ identitiesSavedOnce: true });
             })
             .catch(errorHandler);
         return promise;
@@ -135,6 +139,32 @@ export default React.createClass({
         return promise;
     },
 
+    onClose() {
+        let { selectedRequest: request } = this.props;
+        let { statuses } = this.fetch();
+
+        let status = statuses.findWhere({
+            name: "closed"
+        });
+
+        this.setState({ actionPending: true });
+        let promise = Promise.resolve(
+            AdminResourceRequestActions.updateRequest(request, status)
+        );
+        promise
+            .then(
+                // onSuccess, navigate away
+                () => browserHistory.push("/application/admin/resource-requests"),
+
+                // onFailure, action is no longer pending, trigger error handler
+                err => {
+                    this.setState({ actionPending: false });
+                    errorHandler(err);
+                }
+            )
+        return promise;
+    },
+
     fetch() {
         let { selectedRequest: request } = this.props;
         let statuses = stores.StatusStore.getAll();
@@ -163,7 +193,7 @@ export default React.createClass({
     render() {
         let { allocationSources, identities } = this.fetch();
         let { selectedRequest } = this.props;
-        let { actionPending } = this.state;
+        let { actionPending, allocationsSavedOnce, identitiesSavedOnce } = this.state;
 
         if (actionPending) {
             return (
@@ -173,12 +203,14 @@ export default React.createClass({
 
         let viewProps = {
             request: selectedRequest,
+            resourcesChanged: allocationsSavedOnce || identitiesSavedOnce,
             allocationSources,
             identities,
             onAllocationSave: this.onAllocationSave,
             onIdentitySave: this.onIdentitySave,
             onApprove: this.onApprove,
             onDeny: this.onDeny,
+            onClose: this.onClose,
         };
 
         return (

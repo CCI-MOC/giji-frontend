@@ -3,6 +3,9 @@ import React from "react";
 import globals from "globals";
 import AllocationSourceView from "./AllocationSourceView";
 import IdentityView from "./IdentityView";
+import ModalHelpers from "components/modals/ModalHelpers";
+import ConfirmApproveModal from "./ConfirmApproveModal";
+
 
 // This is the view for the admin Resource Requests panel. This view shouldn't
 // fetch or retrieve any data, just renders props.
@@ -10,9 +13,11 @@ export default React.createClass({
 
     propTypes: {
         request: React.PropTypes.object.isRequired,
+        resourcesChanged: React.PropTypes.bool.isRequired,
         allocationSources: React.PropTypes.object,
         identities: React.PropTypes.object,
         onApprove: React.PropTypes.func.isRequired,
+        onClose: React.PropTypes.func.isRequired,
         onDeny: React.PropTypes.func.isRequired,
         onAllocationSave: React.PropTypes.func.isRequired,
         onIdentitySave: React.PropTypes.func.isRequired
@@ -42,6 +47,20 @@ export default React.createClass({
                 paddingLeft: "2em",
                 flexGrow: 1
             }
+        }
+    },
+
+    onApprove() {
+        let { resourcesChanged, onApprove } = this.props;
+        if (resourcesChanged) {
+            onApprove();
+        } else {
+            // Confirm first that the user want to approve a request when
+            // resources haven't changed
+            ModalHelpers.renderModal(
+                ConfirmApproveModal,
+                { onApprove }
+            );
         }
     },
 
@@ -136,27 +155,35 @@ export default React.createClass({
                 <h5 className="t-title">Quota</h5>
                 { this.renderIdentitiesSection() }
             </div>
-            <h4 className="t-title">2. Approve or Deny the request</h4>
+            <h4 className="t-title">2. Approve/Deny/Close the request</h4>
             <div style={section}>
                 <p>On approve or deny, the user will be notified by email and
                 encouraged to reach out to support if they have questions.
                 Under <a href="//application/my-requests/resources">my requests</a>, users can track the status of each
                 request.</p>
+                <p>On close, the user will not be notified</p>
                 <div style={{ display: "flex" }}>
                     <div style={{ padding: "20px", borderRight: "solid 1px #eee" }} >
-                        <button onClick={this.props.onApprove}
+                        <button onClick={this.onApprove}
                             type="button"
                             className="btn btn-default btn-sm">
                             Approve
                         </button>
                     </div>
-                    <div style={{ padding: "20px" }} >
+                    <div style={{ padding: "20px", borderRight: "solid 1px #eee" }}>
                         <span style={{ paddingRight: "10px" }}>Provide a reason: <input onChange={this.handleResponseChange} value={ denyReason } /></span>
                         <button onClick={() => this.props.onDeny(this.state.denyReason)}
                             disabled={ this.state.denyReason == "" }
                             type="button"
                             className="btn btn-default btn-sm">
                             Deny
+                        </button>
+                    </div>
+                    <div style={{ padding: "20px" }}>
+                        <button onClick={this.props.onClose}
+                            type="button"
+                            className="btn btn-default btn-sm">
+                            Close
                         </button>
                     </div>
                 </div>
