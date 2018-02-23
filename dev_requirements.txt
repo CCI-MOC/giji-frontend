@@ -4,7 +4,7 @@
 #
 #    pip-compile --output-file dev_requirements.txt requirements.txt dev_requirements.in
 #
--e git+https://github.com/cyverse/django-cyverse-auth.git#egg=django-cyverse-auth
+-e git+https://github.com/CCI-MOC/django-giji-auth.git#egg=django-giji-auth
 apache-libcloud==0.20.1
 asn1crypto==0.22.0
 babel==2.3.4

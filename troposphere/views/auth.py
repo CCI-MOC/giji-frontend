@@ -15,8 +15,8 @@ from django.contrib.auth import authenticate, login as auth_login
 
 from rest_framework import status
 
-from django_cyverse_auth.authBackends import get_or_create_user, get_or_create_token
-from django_cyverse_auth.views import globus_login_redirect, globus_logout_redirect
+from django_giji_auth.authBackends import get_or_create_user, get_or_create_token
+from django_giji_auth.views import globus_login_redirect, globus_logout_redirect
 from troposphere.views.exceptions import invalid_auth
 
 logger = logging.getLogger(__name__)
@@ -96,11 +96,11 @@ def login(request):
     request.session.clear_expired()
     if request.META['REQUEST_METHOD'] == 'POST':
         return _post_login(request)
-    elif "django_cyverse_auth.authBackends.MockLoginBackend" in all_backends:
+    elif "django_giji_auth.authBackends.MockLoginBackend" in all_backends:
         return _mock_login(request)
-    elif 'django_cyverse_auth.authBackends.GlobusOAuthLoginBackend' in all_backends:
+    elif 'django_giji_auth.authBackends.GlobusOAuthLoginBackend' in all_backends:
         return _globus_login(request)
-    elif 'django_cyverse_auth.authBackends.OAuthLoginBackend' in all_backends:
+    elif 'django_giji_auth.authBackends.OAuthLoginBackend' in all_backends:
         return _oauth_login(request)
     #Uh - Oh.
     return redirect('application')
@@ -122,16 +122,16 @@ def logout(request):
     #Look for 'cas' to be passed on logout.
     request_data = request.GET
     if request_data.get('force', False):
-        if 'django_cyverse_auth.authBackends.CASLoginBackend' in all_backends\
-        or 'django_cyverse_auth.authBackends.OAuthLoginBackend' in all_backends:
+        if 'django_giji_auth.authBackends.CASLoginBackend' in all_backends\
+        or 'django_giji_auth.authBackends.OAuthLoginBackend' in all_backends:
             redirect_to = request_data.get("service")
             if not redirect_to:
                 redirect_to = settings.SERVER_URL + reverse('application')
             logout_url = cas_oauth_client.logout(redirect_to)
             logger.info("[CAS] Redirect user to: %s" % logout_url)
             return redirect(logout_url)
-        elif 'django_cyverse_auth.authBackends.GlobusLoginBackend' in all_backends\
-          or 'django_cyverse_auth.authBackends.GlobusOAuthLoginBackend' in all_backends:
+        elif 'django_giji_auth.authBackends.GlobusLoginBackend' in all_backends\
+          or 'django_giji_auth.authBackends.GlobusOAuthLoginBackend' in all_backends:
             logger.info("[Globus] Redirect user to logout")
             return globus_logout_redirect(request)
     return redirect('application')
