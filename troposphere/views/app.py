@@ -79,14 +79,14 @@ def _populate_template_params(request, maintenance_records, notice_t, disabled_l
 
     auth_backends = settings.AUTHENTICATION_BACKENDS
     oauth_backends = [
-        'django_cyverse_auth.authBackends.OAuthLoginBackend',
-        'django_cyverse_auth.authBackends.GlobusOAuthLoginBackend'
+        'django_giji_auth.authBackends.OAuthLoginBackend',
+        'django_giji_auth.authBackends.GlobusOAuthLoginBackend'
     ]
     openstack_backends = [
-        'django_cyverse_auth.authBackends.OpenstackLoginBackend',
+        'django_giji_auth.authBackends.OpenstackLoginBackend',
     ]
     password_backends = [
-        'django_cyverse_auth.authBackends.AuthTokenLoginBackend',
+        'django_giji_auth.authBackends.AuthTokenLoginBackend',
     ]
     login_auth_allowed = []
     login_auth_preferred = None
@@ -272,7 +272,7 @@ def handle_template_error(template_params, exception=None):
 def _handle_authenticated_application_request(request, maintenance_records,
         notice_info):
     """
-    Deals with request verified identities via `django_cyverse_auth` module.
+    Deals with request verified identities via `django_giji_auth` module.
     """
     if notice_info and notice_info[1]:
         notice_info = (notice_info[0], notice_info[1],

@@ -35,7 +35,7 @@ INSTALLED_APPS = (
     'rest_framework.authtoken',
     'raven.contrib.django.raven_compat',
     'webpack_loader', # resolved JS asset + hash for template rendering
-    'django_cyverse_auth',
+    'django_giji_auth',
     'api',
     'troposphere',
 )
@@ -164,7 +164,7 @@ REST_FRAMEWORK = {
     # ),
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'rest_framework.authentication.SessionAuthentication',
-        'django_cyverse_auth.authBackends.OAuthTokenLoginBackend'
+        'django_giji_auth.authBackends.OAuthTokenLoginBackend'
     ),
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
     'PAGE_SIZE': 100,
@@ -180,7 +180,7 @@ REST_FRAMEWORK = {
 
 AUTHENTICATION_BACKENDS = (
     'django.contrib.auth.backends.ModelBackend',
-    'django_cyverse_auth.authBackends.OAuthLoginBackend'
+    'django_giji_auth.authBackends.OAuthLoginBackend'
 )
 
 # This Method will generate SECRET_KEY and write it to file..
