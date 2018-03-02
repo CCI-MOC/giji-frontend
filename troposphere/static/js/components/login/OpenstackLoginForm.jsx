@@ -33,29 +33,21 @@ export default React.createClass({
         }
         let username = this.state.username;
         let password = this.state.password;
-        let projectName = this.state.projectName;
 
         this.setState({
             provider, providerList, showNewProvider,
-            username, password, projectName});
+            username, password});
     },
 
     getInitialState: function() {
         return {
             username: "",
             password: "",
-            project_name: "",
             provider: null,
             allowLogin: true,
             providerList: stores.ProviderStore.getAll(),
             showNewProvider: false
         };
-    },
-    onProjectNameChange: function(e) {
-        var input = e.target.value.trim();
-        this.setState({
-            projectName: input
-        });
     },
 
     onUsernameChange: function(e) {
@@ -78,7 +70,7 @@ export default React.createClass({
         this.props.attemptLogin(
             this.state.username,
             this.state.password,
-            this.state.projectName,
+            null,
             this.state.provider,
             this.onLoginError)
     },
@@ -101,12 +93,8 @@ export default React.createClass({
     isSubmittable: function() {
         var hasUsername = !!this.state.username && this.state.username.length > 0;
         var hasPassword = !!this.state.password && this.state.password.length > 0;
-        var hasProjectName = !!this.state.projectName && this.state.projectName.length > 0;
         var canLogin = this.state.allowLogin == true;
-        if(this.state.showNewProvider) {
-            hasProjectName = true;
-        }
-        return hasUsername && hasPassword && hasProjectName && canLogin;
+        return hasUsername && hasPassword && canLogin;
     },
     onProviderChange: function(provider) {
         this.setState({provider:provider});
@@ -129,7 +117,6 @@ export default React.createClass({
         let groupClasses = this.state.error_message != null ? "form-group has-error" : "form-group";
         let usernameClasses = groupClasses,
             passwordClasses = groupClasses,
-            projectNameClasses = groupClasses,
             errorMessage = this.state.error_message != null ? "Login Failed: "+ this.state.error_message : null;
         let { provider, providerList} = this.state;
 
@@ -159,19 +146,6 @@ export default React.createClass({
                         id="password"
                         value={this.state.password}
                         onChange={this.onPasswordChange}
-                        onKeyPress={this.onEnterPressed}
-                        />
-                </div>
-                <div className={projectNameClasses}>
-                    <label htmlFor="projectName">
-                        Project Name
-                    </label>
-                    <input required
-                        type="text"
-                        className="form-control"
-                        id="projectName"
-                        value={this.state.projectName}
-                        onChange={this.onProjectNameChange}
                         onKeyPress={this.onEnterPressed}
                         />
                 </div>

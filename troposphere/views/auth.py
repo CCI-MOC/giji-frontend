@@ -67,9 +67,9 @@ def _post_login(request):
         auth_kwargs['token'] = data['token']
     if 'auth_url' in data:
         auth_kwargs['auth_url'] = data['auth_url']
-    if 'project_name' in data:
-        auth_kwargs['project_name'] = data['project_name']
     user = authenticate(**auth_kwargs)
+    project_name = request.session['token_project_name']
+    auth_kwargs['project_name'] = project_name
     # A traditional POST login will likely NOT create a 'Token', so lets do that now.
     if not user:
             return invalid_auth("Username/Password combination was invalid")
@@ -81,7 +81,7 @@ def _post_login(request):
     _apply_token_to_session(request, new_token.key)
     request.session['access_token'] = new_token.key
     request.session['username'] = user.username
-    to_json = json.dumps({"username":user.username, "token":new_token.key})
+    to_json = json.dumps({"username":user.username, "token":new_token.key, "project_name": project_name})
     return HttpResponse(to_json, content_type="application/json")
 
 
