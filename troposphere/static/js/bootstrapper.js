@@ -90,6 +90,8 @@ stores.AllocationSourceStore = require("stores/AllocationSourceStore");
 stores.SaharaPluginStore = require("stores/SaharaPluginStore");
 stores.JobStore = require("stores/JobStore");
 stores.ClusterStore = require("stores/ClusterStore");
+stores.SyncInstanceStore = require("stores/SyncInstanceStore");
+
 
 import actions from "actions";
 

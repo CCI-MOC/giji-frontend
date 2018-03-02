@@ -2,13 +2,14 @@ import React from "react";
 import RaisedButton from 'material-ui/RaisedButton';
 import ReactDOM from "react-dom";
 import $ from "jquery";
-import stores from "stores";
-import actions from "actions";
+// import stores from "stores";
+// import actions from "actions";
 
-
+{/*
 function randomIntFromInterval(min, max) {
     return Math.floor(Math.random() * (max - min + 1) + min);
 }
+*/}
 
 export default React.createClass({
     displayName: "RefreshButton",
@@ -40,6 +41,8 @@ export default React.createClass({
     },
 
     handleRefresh: function() {
+        window.location.reload();
+        {/*
         var instances = stores.InstanceStore.getAll(),
             volumes = stores.VolumeStore.getAll(),
             refreshTime = randomIntFromInterval(5, 7);
@@ -69,6 +72,7 @@ export default React.createClass({
 
         // Fixes a bug in FireFox where the tooltip doesn't go away when button is clicked
         this.hideTooltip();
+        */}
     },
 
     render: function() {

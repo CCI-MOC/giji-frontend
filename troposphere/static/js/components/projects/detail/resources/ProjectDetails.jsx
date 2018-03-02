@@ -62,7 +62,8 @@ export default React.createClass({
         stores.ProjectInstanceStore.addChangeListener(this.updateState);
         stores.ProjectExternalLinkStore.addChangeListener(this.updateState);
         stores.InstanceStore.addChangeListener(this.updateState);
-       stores.VolumeStore.addChangeListener(this.updateState);
+        stores.VolumeStore.addChangeListener(this.updateState);
+        stores.SyncInstanceStore.addChangeListener(this.updateState);
     },
 
     componentWillUnmount: function() {
@@ -72,6 +73,7 @@ export default React.createClass({
         stores.ProjectExternalLinkStore.removeChangeListener(this.updateState);
         stores.InstanceStore.removeChangeListener(this.updateState);
         stores.VolumeStore.removeChangeListener(this.updateState);
+        stores.SyncInstanceStore.addChangeListener(this.updateState);
     },
 
     onResourceSelected: function(resource) {
@@ -168,9 +170,10 @@ export default React.createClass({
             projectImages = stores.ProjectImageStore.getImagesFor(project),
             previewedResource = this.state.previewedResource,
             selectedResources = this.state.selectedResources,
+            syncInstances = stores.SyncInstanceStore.getAll(),
             isButtonBarVisible;
 
-        if (!projectInstances || !projectImages || !projectExternalLinks || !projectVolumes)
+        if (!projectInstances || !projectImages || !projectExternalLinks || !projectVolumes || !syncInstances)
             return <div className="loading"></div>;
 
         // Only show the action button bar if the user has selected resources
