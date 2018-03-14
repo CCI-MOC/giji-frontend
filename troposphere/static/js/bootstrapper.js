@@ -129,6 +129,7 @@ actions.UserActions = require("actions/UserActions");
 actions.VolumeActions = require("actions/VolumeActions");
 actions.ClusterActions = require("actions/ClusterActions");
 actions.JobActions = require("actions/JobActions");
+actions.HTCActions = require("actions/HTCActions");
 
 import modals from "modals";
 
@@ -149,6 +150,7 @@ modals.VolumeModals = require("modals/VolumeModals");
 modals.UnsupportedModal = require("modals/UnsupportedModal");
 modals.ClusterModals = require("modals/ClusterModals");
 modals.JobModals = require("modals/JobModals");
+modals.HTCModals = require("modals/HTCModals");
 
 export default {
     run: function() {

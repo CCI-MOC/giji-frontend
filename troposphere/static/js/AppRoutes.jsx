@@ -69,6 +69,8 @@ import BigDataPage from "./components/dataverse/BigDataPage";
 
 import OpenStackPage from "./components/openstack/OpenStackPage";
 
+import HTCPage from "./components/htc/HTCPage";
+
 const providersRoute = (
 <Route path="providers" component={ProvidersMaster}>
     <IndexRoute component={ProviderListSection} />
@@ -136,6 +138,7 @@ function AppRoutes(props) {
             <Route path="openshift" component={OpenshiftPage} />
             <Route path="bmi" component={BMIPage} />
             <Route path="hil" component={HILPage} />
+            <Route path="htc" component={HTCPage} />
             <Route path="netex" component={NetexPage} />
             <Route path="mixmatch" component={MixmatchPage} />
             <Route path="settings" component={SettingsPage}>
