@@ -35,6 +35,7 @@ export default React.createClass({
             routes = [
                 this.renderRoute("Plugins", "plugins", "wrench", true),
                 this.renderRoute("Big Data Analytics", "big-data-analytics", "film", true),
+                this.renderRoute("MPC", "multiparty", "lock", true),
 
             ];
         }

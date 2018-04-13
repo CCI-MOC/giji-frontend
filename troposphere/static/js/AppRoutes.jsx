@@ -66,6 +66,7 @@ import TutorialPage from "./components/tutorial/TutorialPage";
 import DataversePage from "./components/dataverse/DataversePage";
 import PluginPage from "./components/dataverse/PluginPage";
 import BigDataPage from "./components/dataverse/BigDataPage";
+import ConclavePage from "./components/dataverse/ConclavePage";
 
 import OpenStackPage from "./components/openstack/OpenStackPage";
 
@@ -131,6 +132,7 @@ function AppRoutes(props) {
                 <IndexRedirect to="big-data-analytics" />
                 <Route path="big-data-analytics" component={BigDataPage} />
                 <Route path="plugins" component={PluginPage} />
+                <Route path="multiparty" component={ConclavePage} />
             </Route>
             <Route path="openstack" component={OpenStackPage} />
             <Route path="openshift" component={OpenshiftPage} />

@@ -90,6 +90,9 @@ stores.AllocationSourceStore = require("stores/AllocationSourceStore");
 stores.SaharaPluginStore = require("stores/SaharaPluginStore");
 stores.JobStore = require("stores/JobStore");
 stores.ClusterStore = require("stores/ClusterStore");
+stores.ConclaveStore = require("stores/ConclaveStore");
+stores.FileStore = require("stores/FileStore");
+stores.DataSourceStore = require("stores/DataSourceStore");
 
 import actions from "actions";
 
@@ -129,6 +132,7 @@ actions.UserActions = require("actions/UserActions");
 actions.VolumeActions = require("actions/VolumeActions");
 actions.ClusterActions = require("actions/ClusterActions");
 actions.JobActions = require("actions/JobActions");
+actions.ConclaveActions = require("actions/ConclaveActions");
 
 import modals from "modals";
 
@@ -149,6 +153,7 @@ modals.VolumeModals = require("modals/VolumeModals");
 modals.UnsupportedModal = require("modals/UnsupportedModal");
 modals.ClusterModals = require("modals/ClusterModals");
 modals.JobModals = require("modals/JobModals");
+modals.ConclaveModals = require("modals/ConclaveModals");
 
 export default {
     run: function() {

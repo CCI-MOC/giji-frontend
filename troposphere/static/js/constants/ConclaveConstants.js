@@ -1,0 +1,4 @@
+export default {
+    ADD_CONCLAVE: "ADD_CONCLAVE",
+    REMOVE_CONCLAVE: "REMOVE_CONCLAVE"
+};
